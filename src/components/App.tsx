@@ -1,21 +1,21 @@
-import { Button, Dialog, DialogTitle } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 import '../styles/App.scss';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
-const PageNotFound = (
+const PageNotFound = () => (
   <div>
     <p>404 - This Page Wasn't Found</p>
   </div>
 );
 
-const Help = (
+const Help = () => (
   <div>
     <p>This is the Help page.</p>
   </div>
 );
 
-const About = (
+const About = () => (
   <div>
     <p>This is the About page.</p>
   </div>
@@ -30,10 +30,6 @@ const Search = () => {
 };
 
 class Results extends Component {
-  constructor(props: {} | Readonly<{}>){
-    super(props)
-  }
-
   render(){
     return (
       <div>
@@ -46,44 +42,44 @@ class Results extends Component {
 const Header = () => (
   <header>
     <h1>Eop</h1>
-    <div>This is the Header component.</div>
+    <div>
+      <Link to="/about">
+        <Button>About</Button>
+      </Link>      
+      <Link to="/">
+        <Button>Home</Button>
+      </Link>
+      <Link to="/Help">
+        <Button>Home</Button>
+      </Link>
+      <Link to="/results">
+        <Button>Test Results Page</Button>
+      </Link>
+      <Link to="/test">
+        <Button>Test 404 Page</Button>
+      </Link>
+    </div>
   </header>
 );
 
-const Router = () => (
-  <BrowserRouter>
-    <div>
-      <Header/>
-      <Switch>
-        <Route path="/" component={Search}/>
-        <Route path="/about" component={About}/>
-        <Route path="/help" component={Help}/>
-        <Route path="/results" component={Results}/>
-        <Route component={PageNotFound}/>
-      </Switch>
-    </div>
-  </BrowserRouter>
-);
-
 class App extends Component {
-  
   state = {
-    showDialog: false
+    loggedIn: false
   }
 
   render(){return (
-    <div className="App">
-      <p>Hello World!</p>
-      <Button onClick={() => {
-        this.setState(() => {
-          console.log();
-          return {showDialog: !this.state.showDialog}
-        })
-      }}>Test</Button>
-      <Dialog open={this.state.showDialog}>
-        <DialogTitle>This is a test.</DialogTitle>
-      </Dialog>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Header/>
+        <Switch>
+          <Route path="/" exact={true}><Search/></Route>
+          <Route path="/about"><About/></Route>
+          <Route path="/help"><Help/></Route>
+          <Route path="/results"><Results/></Route>
+          <Route><PageNotFound/></Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );}
 };
 
