@@ -9,6 +9,7 @@ import PageNotFound from './PageNotFound';
 import Results from './Results';
 import Search from './Search';
 
+
 class App extends Component {
   render(){return (
     <BrowserRouter>
@@ -27,3 +28,7 @@ class App extends Component {
 };
 
 export default App;
+
+
+// EVERYTHING BELOW IS TO BE REFACTORED
+
