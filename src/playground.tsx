@@ -1,11 +1,11 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit';
 
 /*                                               /
 /   Types and interfaces for state management.   /
 /                                               */
 type Sort = 'ASC' | 'DESC';
 
-interface SearchFilter {
+interface FilterState {
     text: string;
     media_type: 'IMAGES' | 'VIDEOS' | 'ALL';
     event?: string;
@@ -27,21 +27,24 @@ interface SearchFilter {
 /*                                               /
 /   Slices of state.                             /
 /                                               */
-const initialFilterState: SearchFilter = {
+const initialFilterState = {
     text: '',
     media_type: 'ALL'
-};
+} as FilterState;
 
 const filterSlice = createSlice({
     name: 'filters',
     initialState: initialFilterState,
     reducers: {
-        temporaryAction: (state, {payload}) => ({...state, ...payload})
+        updateFilter: (state, action: PayloadAction<FilterState>) => {
+            return ({ ...state, ...action.payload })
+        },
+        resetFilter: () => initialFilterState
     }
 });
 
 const filterReducer = filterSlice.reducer;
-const { temporaryAction } = filterSlice.actions;
+const { updateFilter, resetFilter } = filterSlice.actions;
 
 /*                                               /
 /   Configure store etc.                         /
@@ -59,10 +62,12 @@ const unsubscribe = store.subscribe(() => {
     console.log('Current State: ', store.getState());
 });
 
-store.dispatch(temporaryAction({
+store.dispatch(updateFilter({
     text: 'This is a test!',
-    media: 'ALL'
+    media_type: 'IMAGES'
 }));
+
+store.dispatch(resetFilter());
 
 unsubscribe();
 
