@@ -9,3 +9,8 @@
 
 ## 12/26
 * Set-up routing to boiler-plate pages
+
+## 12/31
+* Added redux-tools dependency.
+* Created interface for filterObject.
+* Initialized store with slice of state for filtering + reducer and actions placeholder in playground.tsx.
