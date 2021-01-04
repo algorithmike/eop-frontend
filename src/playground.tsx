@@ -1,13 +1,13 @@
 import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit';
 
-/*                                               /
-/   Types and interfaces for state management.   /
-/                                               */
+/************************************************************** /
+/          Types and interfaces for state management.           /
+/ **************************************************************/
 type Sort = 'ASC' | 'DESC';
 
 interface FilterState {
-    text: string;
-    media_type: 'IMAGES' | 'VIDEOS' | 'ALL';
+    text?: string;
+    media_type?: 'IMAGES' | 'VIDEOS' | 'ALL';
     event?: string;
     location?: {
         longitude: number;
@@ -24,9 +24,9 @@ interface FilterState {
     };
 };
 
-/*                                               /
-/   Slices of state.                             /
-/                                               */
+/************************************************************** /
+/                       Slices of state.                        /
+/ **************************************************************/
 const initialFilterState = {
     text: '',
     media_type: 'ALL'
@@ -46,18 +46,18 @@ const filterSlice = createSlice({
 const filterReducer = filterSlice.reducer;
 const { updateFilter, resetFilter } = filterSlice.actions;
 
-/*                                               /
-/   Configure store etc.                         /
-/                                               */
+/************************************************************** /
+/                     Configure store etc.                      /
+/ **************************************************************/
 const store = configureStore({
     reducer: {
         filterReducer
     }
 });
 
-/*                                               /
-/   Testing                                      /
-/                                               */
+/************************************************************** /
+/                           Testing.                            /
+/ **************************************************************/
 const unsubscribe = store.subscribe(() => {
     console.log('Current State: ', store.getState());
 });
