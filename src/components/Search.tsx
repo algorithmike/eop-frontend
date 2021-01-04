@@ -1,33 +1,27 @@
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
+import { TextField } from '@material-ui/core'
+import { updateFilter, FilterState } from '../store/slices/filter'
 
-import { updateFilter, resetFilter, FilterState } from '../store/slices/filter'
 
-// Need to sort out props typing
-const Search = (props: { dispatch: (arg0: { payload: FilterState; type: string; }) => void; }) => {
+const Search = (props: PropsType) => {
   return (
     <div>
       <p>This is the Search page.</p>
-      <input type='text' onChange={(e) => {
-        props.dispatch(updateFilter({ text: e.target.value }))
-      }} />
+      <TextField
+        variant="outlined"
+        onChange={(e) => {
+          props.dispatch(updateFilter({ text: e.target.value }))
+        }}
+        value={props.filters.text}
+      />
     </div>
   );
 };
 
-export default connect()(Search);
+const mapStateToProps = (state: any) => ({
+    filters: state.filters as FilterState
+})
+const connector = connect(mapStateToProps);
+type PropsType = ConnectedProps<typeof connector>;
 
-/************************************************************** /
-/                           Testing.                            /
-/ **************************************************************/
-// const unsubscribe = store.subscribe(() => {
-//   console.log('Current State: ', store.getState());
-// });
-
-// store.dispatch(updateFilter({
-//   text: 'This is a test!',
-//   media_type: 'IMAGES'
-// }));
-
-// store.dispatch(resetFilter());
-
-// unsubscribe();
+export default connector(Search);

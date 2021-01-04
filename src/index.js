@@ -13,6 +13,6 @@ const JSX = (
 
 ReactDOM.render(JSX, document.getElementById('root'));
 
-const unsubscribe = store.subscribe(() => {
+store.subscribe(() => {
   console.log('Current State: ', store.getState());
 });
