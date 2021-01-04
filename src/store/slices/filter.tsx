@@ -27,7 +27,7 @@ export interface FilterState {
 /************************************************************** /
 /                       Slice                                   /
 / **************************************************************/
-const initialFilterState = {
+export const initialFilterState = {
     text: '',
     media_type: 'ALL'
 } as FilterState;
