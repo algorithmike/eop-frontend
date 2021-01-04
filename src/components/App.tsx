@@ -28,7 +28,3 @@ class App extends Component {
 };
 
 export default App;
-
-
-// EVERYTHING BELOW IS TO BE REFACTORED
-
