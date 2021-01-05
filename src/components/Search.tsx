@@ -10,7 +10,7 @@ const Search = (props: PropsType) => {
       <TextField
         variant="outlined"
         onChange={(e) => {
-          props.dispatch(updateFilter({ text: e.target.value }))
+          props.updateFilter({ text: e.target.value })
         }}
         value={props.filters.text}
       />
@@ -21,7 +21,10 @@ const Search = (props: PropsType) => {
 const mapStateToProps = (state: any) => ({
     filters: state.filters as FilterState
 })
-const connector = connect(mapStateToProps);
+const mapDispatchToProps = (dispatch: any) => ({
+  updateFilter: (text: FilterState) => (dispatch(updateFilter(text)))
+})
+const connector = connect(mapStateToProps, mapDispatchToProps);
 type PropsType = ConnectedProps<typeof connector>;
 
 export default connector(Search);
