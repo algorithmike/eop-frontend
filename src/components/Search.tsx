@@ -27,4 +27,4 @@ const mapDispatchToProps = (dispatch: any) => ({
 const connector = connect(mapStateToProps, mapDispatchToProps);
 type PropsType = ConnectedProps<typeof connector>;
 
-export default connector(Search);
+export default connector(Search); 
