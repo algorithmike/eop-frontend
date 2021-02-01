@@ -24,6 +24,7 @@ const Results = () => {
       {data.content.map(({title}: any, index: number) => {
         return (
           <div key={index}>
+            <img src='./images/dummy.png' style={{width: '15rem'}}/>
             <h3>{title}</h3>
           </div>
         )
