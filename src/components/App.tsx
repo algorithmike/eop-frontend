@@ -8,6 +8,7 @@ import Help from './Help';
 import PageNotFound from './PageNotFound';
 import Results from './Results';
 import Search from './Search';
+import Upload from './Upload';
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path="/about"><About/></Route>
           <Route path="/help"><Help/></Route>
           <Route path="/results"><Results/></Route>
+          <Route path ="/upload"><Upload/></Route>
           <Route><PageNotFound/></Route>
         </Switch>
       </div>

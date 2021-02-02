@@ -21,6 +21,9 @@ const Header = () => (
       <Link to="/test">
         <Button>Test 404 Page</Button>
       </Link>
+      <Link to="/upload">
+        <Button>Test Upload</Button>
+      </Link>
     </div>
   </header>
 );
