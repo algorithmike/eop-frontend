@@ -10,7 +10,7 @@ const store = instantiateStore();
 const client = new ApolloClient({
   link: createUploadLink({
     uri: (process.env.NODE_ENV === 'production')
-      ? 'https://eop-backend.herokuapp.com/graphql'
+      ? process.env.REACT_APP_API_URL
       : 'http://localhost:4000/graphql'
   }),
   cache: new InMemoryCache()
