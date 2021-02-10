@@ -20,7 +20,7 @@ const CREATE_CONTENT = gql`
     $customDate: Float
     $eventId: String
     ){
-    createContent(
+    createContent( 
       data: {
         file: $file,
         title: $title,
@@ -29,7 +29,8 @@ const CREATE_CONTENT = gql`
         postedFromEop: $postedFromEop,
         customDate: $customDate,
         eventId: $eventId
-    }){
+      }
+    ){
       mediaType,
       title,
       createdAt,

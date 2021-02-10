@@ -6,6 +6,9 @@ const Header = () => (
   <header>
     <h1>Eop</h1>
     <div>
+      <Link to="/login">
+        <Button>Login</Button>
+      </Link>
       <Link to="/about">
         <Button>About</Button>
       </Link>
