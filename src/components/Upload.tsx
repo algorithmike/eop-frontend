@@ -57,11 +57,11 @@ const Upload = () => {
       onCompleted: data => {console.log(data)}
     })
 
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files && event.target.files[0];
       if(!file) return
     
-      createContent({
+      const data = await createContent({
         variables: {
           file,
           title: "Test Title", // To be wired up.
