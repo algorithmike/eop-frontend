@@ -1,6 +1,7 @@
-import { connect, ConnectedProps } from 'react-redux';
+import { connect } from 'react-redux';
 import { TextField } from '@material-ui/core'
-import { updateFilter, FilterState } from '../store/slices/filter'
+
+import { updateFilter } from '../store/slices/filter'
 
 
 const Search = (props) => {
@@ -22,7 +23,7 @@ const mapStateToProps = (state) => ({
     filters: state.filters
 })
 const mapDispatchToProps = (dispatch) => ({
-  updateFilter: (text) => (dispatch(updateFilter(text)))
+  updateFilter: (filter) => (dispatch(updateFilter(filter)))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search); 

@@ -1,6 +1,9 @@
 import { useMutation, gql } from '@apollo/client';
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Box, Button, TextField, Container } from '@material-ui/core';
+
+import { setMe } from '../store/slices/me'
 
 const LOG_IN = gql`
     mutation login (
@@ -16,7 +19,7 @@ const LOG_IN = gql`
     }
 `        
 
-const Login = () => {
+const Login = (props) => {
     const [values, setValues] = useState({
         email: '',
         password: ''
@@ -30,6 +33,7 @@ const Login = () => {
         update: (proxy, {data}) => {
             const token = data.login.token;
             console.log(token);
+            props.setMe({token})
             setErrors({})
         },
         onError: async (errs) => {
@@ -106,4 +110,11 @@ const Login = () => {
     );
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+    me: state.me
+})
+const mapDispatchToProps = (dispatch) => ({
+    setMe: (me) => (dispatch(setMe(me)))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login); 
