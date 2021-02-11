@@ -1,6 +1,6 @@
 import { useMutation, gql } from '@apollo/client';
 import React, { useState } from 'react';
-import { Button, TextField, Container } from '@material-ui/core';
+import { Box, Button, TextField, Container } from '@material-ui/core';
 
 const LOG_IN = gql`
     mutation login (
@@ -22,22 +22,37 @@ const Login = () => {
         password: ''
     })
 
+    const [errors, setErrors] = useState({
+        errors: []
+    })
+
     const [login, {loading}] = useMutation(LOG_IN, {
-        update: (proxy, {data, errors}) => {
+        update: (proxy, {data}) => {
             const token = data.login.token;
             console.log(token);
+            setErrors({})
+        },
+        onError: async (errs) => {
+            let errArray = []
+            await new Promise(resolve => {
+                errs.graphQLErrors.forEach(e => {
+                    errArray.push(e.message)
+                })
+                resolve()
+            })
+            setErrors({errors: errArray})
         },
         variables: values
     })
 
-    const onChangeHandler = ({target}: React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeHandler = ({target}) => {
         setValues({
             ...values,
             [target.name]: target.value
         })
     }
 
-    const onSubmit = (event: React.SyntheticEvent) => {
+    const onSubmit = (event) => {
         event.preventDefault();
         login();
     }
@@ -48,6 +63,12 @@ const Login = () => {
                 onSubmit={onSubmit}
                 noValidate
             >
+                {Object.keys(errors).length > 0 && (
+                    Object.values(errors).map((value, index) => (
+                        // error message
+                        <Box color="text.primary" key={index}>{value}</Box>
+                    ))
+                )}
                 <TextField
                     variant="outlined"
                     required
