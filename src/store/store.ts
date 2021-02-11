@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import filters from './slices/filter';
+import me from './slices/me';
 
 /************************************************************** /
 /                     Configure store                           /
@@ -7,7 +8,8 @@ import filters from './slices/filter';
 const store = () => {
     return configureStore({
         reducer: {
-            filters
+            filters,
+            me
         }
     });
 };
