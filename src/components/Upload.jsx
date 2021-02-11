@@ -58,7 +58,7 @@ const Upload = () => {
       onCompleted: data => {console.log(data)}
     })
 
-    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (event) => {
       const file = event.target.files && event.target.files[0];
       if(!file) return
     

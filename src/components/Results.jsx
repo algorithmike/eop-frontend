@@ -21,10 +21,10 @@ const Results = () => {
 
   return (
     <div>
-      {data.content.map(({title}: any, index: number) => {
+      {data.content.map(({title, mediaPreviewUrl}, index) => {
         return (
           <div key={index}>
-            <img src='./images/dummy.png' alt={title} style={{width: '15rem'}}/>
+            <img src={mediaPreviewUrl} alt={title} style={{width: '15rem'}}/>
             <h3>{title}</h3>
           </div>
         )

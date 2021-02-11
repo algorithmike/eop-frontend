@@ -3,7 +3,7 @@ import { TextField } from '@material-ui/core'
 import { updateFilter, FilterState } from '../store/slices/filter'
 
 
-const Search = (props: PropsType) => {
+const Search = (props) => {
   return (
     <div>
       <p>This is the Search page.</p>
@@ -18,13 +18,11 @@ const Search = (props: PropsType) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-    filters: state.filters as FilterState
+const mapStateToProps = (state) => ({
+    filters: state.filters
 })
-const mapDispatchToProps = (dispatch: any) => ({
-  updateFilter: (text: FilterState) => (dispatch(updateFilter(text)))
+const mapDispatchToProps = (dispatch) => ({
+  updateFilter: (text) => (dispatch(updateFilter(text)))
 })
-const connector = connect(mapStateToProps, mapDispatchToProps);
-type PropsType = ConnectedProps<typeof connector>;
 
-export default connector(Search); 
+export default connect(mapStateToProps, mapDispatchToProps)(Search); 
