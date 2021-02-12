@@ -15,9 +15,14 @@ const LOG_IN = gql`
             password: $password
         ){
             token
+            username
+            email
+            realname
+            description
+            profilePicUrl
         }
     }
-`        
+`
 
 const Login = (props) => {
     const [values, setValues] = useState({
@@ -31,8 +36,9 @@ const Login = (props) => {
 
     const [login, {loading}] = useMutation(LOG_IN, {
         update: (proxy, {data}) => {
-            const token = data.login.token;
-            console.log(token);
+            console.log(data.login)
+            localStorage.setItem('eop_auth', data.login.token)
+            const token = localStorage.getItem('eop_auth')
             props.setMe({token})
             setErrors({})
         },

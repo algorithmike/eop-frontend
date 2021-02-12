@@ -9,6 +9,10 @@ const Header = () => (
       <Link to="/login">
         <Button>Login</Button>
       </Link>
+      <Button onClick={() => {
+        localStorage.removeItem('eop_auth')
+        console.log(localStorage.getItem('eop_auth'))
+        }}>Test Logout</Button>
       <Link to="/about">
         <Button>About</Button>
       </Link>

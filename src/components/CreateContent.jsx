@@ -44,11 +44,7 @@ const CREATE_CONTENT = gql`
   }
 `
 
-const Upload = () => {
-    // const [uploadFile] = useMutation(UPLOAD_FILE, {
-    //   onCompleted: data => {console.log(data)}
-    // })
-
+const CreateContent = () => {
     const [createContent] = useMutation(CREATE_CONTENT, {
       context: {
         headers: {
@@ -87,4 +83,4 @@ const Upload = () => {
     )
   };
   
-  export default Upload;
+  export default CreateContent;
