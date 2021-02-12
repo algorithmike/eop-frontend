@@ -36,10 +36,9 @@ const Login = (props) => {
 
     const [login, {loading}] = useMutation(LOG_IN, {
         update: (proxy, {data}) => {
-            console.log(data.login)
-            localStorage.setItem('eop_auth', data.login.token)
-            const token = localStorage.getItem('eop_auth')
-            props.setMe({token})
+            const { token, email, realname, description, profilePicUrl } = data.login
+            localStorage.setItem('eop_auth', token)
+            props.setMe({ token, email, realname, description, profilePicUrl })
             setErrors({})
         },
         onError: async (errs) => {
@@ -66,7 +65,6 @@ const Login = (props) => {
         event.preventDefault();
         login();
     }
-
     return (
         <Container maxWidth="xs">
             <form
