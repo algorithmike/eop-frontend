@@ -1,5 +1,6 @@
 import { useMutation, gql } from '@apollo/client';
-import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 
 // const UPLOAD_FILE = gql`
@@ -44,43 +45,48 @@ const CREATE_CONTENT = gql`
   }
 `
 
-const CreateContent = () => {
-    const [createContent] = useMutation(CREATE_CONTENT, {
-      context: {
-        headers: {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc2MDE0MzJkLTEwZWMtNDliZC04Y2JiLWJmZWQ5YTNkNmFkZiIsImlhdCI6MTYxMjkzNjE0M30.JOtbWztCYWF0RFA3WQWYo4RTOHGSLHH-OKn7cTtDLFM" // Test
-        }
-      },
-      onCompleted: data => {console.log(data)}
+const CreateContent = (props) => {
+  const [createContent] = useMutation(CREATE_CONTENT, {
+    context: {
+      headers: {
+          "Authorization": `Bearer ${props.me.token}`
+      }
+    },
+    onCompleted: data => {console.log(data)}
+  })
+
+  const handleFileChange = async (event) => {
+    const file = event.target.files && event.target.files[0];
+    if(!file) return
+  
+    const data = await createContent({
+      variables: {
+        file,
+        title: "Test Title", // To be wired up.
+        coordinates: "123, 456", // To be wired up.
+        description: "Test Description", // To be wired up.
+        postedFromEop: false, // To be wired up.
+        customDate: undefined, // To be wired up.
+        eventId: undefined // To be wired up.
+      }
     })
 
-    const handleFileChange = async (event) => {
-      const file = event.target.files && event.target.files[0];
-      if(!file) return
-    
-      const data = await createContent({
-        variables: {
-          file,
-          title: "Test Title", // To be wired up.
-          coordinates: "123, 456", // To be wired up.
-          description: "Test Description", // To be wired up.
-          postedFromEop: false, // To be wired up.
-          customDate: undefined, // To be wired up.
-          eventId: undefined // To be wired up.
-        }
-      })
+    // uploadFile({
+    //   variables: {file}
+    // })
+  }
 
-      // uploadFile({
-      //   variables: {file}
-      // })
-    }
+  return (!props.me.token) ? <Redirect to="/login" /> 
+  : (
+    <div>
+      <p>This is the Upload component.</p>
+      <input type='file' onChange={handleFileChange}/>
+    </div>
+  )
+};
 
-    return (
-      <div>
-        <p>This is the Upload component.</p>
-        <input type='file' onChange={handleFileChange}/>
-      </div>
-    )
-  };
-  
-  export default CreateContent;
+const mapStateToProps = (state) => ({
+    me: state.me
+})
+
+export default connect(mapStateToProps)(CreateContent); 
