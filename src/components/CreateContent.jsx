@@ -1,15 +1,8 @@
 import { useMutation, gql } from '@apollo/client';
+import { useState } from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-
-// const UPLOAD_FILE = gql`
-//   mutation uploadFile($file: Upload!){
-//     uploadFile(file: $file){
-//       url
-//     }
-//   }
-// `
 
 const CREATE_CONTENT = gql`
   mutation createContent(
@@ -46,13 +39,24 @@ const CREATE_CONTENT = gql`
 `
 
 const CreateContent = (props) => {
+  const [values, setValues] = useState({
+      title: 'Untitled',
+      coordinates: '123, 456',
+      description: 'Test Description',
+      postedFromEop: false,
+      eventId: undefined // Add event selector dropdown for this.
+  })
+
   const [createContent] = useMutation(CREATE_CONTENT, {
     context: {
       headers: {
           "Authorization": `Bearer ${props.me.token}`
       }
     },
-    onCompleted: data => {console.log(data)}
+    onCompleted: data => {console.log(data)},
+    onError: (errs) => {
+      console.log(errs) // Add error handling.
+    }
   })
 
   const handleFileChange = async (event) => {
@@ -62,12 +66,7 @@ const CreateContent = (props) => {
     const data = await createContent({
       variables: {
         file,
-        title: "Test Title", // To be wired up.
-        coordinates: "123, 456", // To be wired up.
-        description: "Test Description", // To be wired up.
-        postedFromEop: false, // To be wired up.
-        customDate: undefined, // To be wired up.
-        eventId: undefined // To be wired up.
+        ...values
       }
     })
 
