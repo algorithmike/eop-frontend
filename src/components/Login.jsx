@@ -1,6 +1,7 @@
 import { useMutation, gql } from '@apollo/client';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Box, Button, TextField, Container } from '@material-ui/core';
 
 import { setMe } from '../store/slices/me'
@@ -38,8 +39,8 @@ const Login = (props) => {
         update: (proxy, {data}) => {
             const { token, email, realname, description, profilePicUrl } = data.login
             localStorage.setItem('eop_auth', token)
-            props.setMe({ token, email, realname, description, profilePicUrl })
             setErrors({})
+            props.setMe({ token, email, realname, description, profilePicUrl })
         },
         onError: async (errs) => {
             let errArray = []
@@ -65,7 +66,9 @@ const Login = (props) => {
         event.preventDefault();
         login();
     }
-    return (
+
+    return (props.me.token) ? <Redirect to="/" /> 
+    : (
         <Container maxWidth="xs">
             <form
                 onSubmit={onSubmit}

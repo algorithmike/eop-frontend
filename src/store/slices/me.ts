@@ -27,8 +27,6 @@ const meSlice = createSlice({
     initialState: initialMeState,
     reducers: {
         setMe: (state, action: PayloadAction<MeState>) => {
-            console.log('state: ', state)
-            console.log('action.payload ', action.payload)
             return ({ ...state, ...action.payload })
         },
         unSetMe: () => initialMeState
