@@ -4,26 +4,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Box, Button, TextField, Container } from '@material-ui/core';
 
-import { setMe } from '../store/slices/me'
-
-const LOG_IN = gql`
-    mutation login (
-        $email: String!
-        $password: String!
-    ){
-        login(
-            email: $email
-            password: $password
-        ){
-            token
-            username
-            email
-            realname
-            description
-            profilePicUrl
-        }
-    }
-`
+import { LOG_IN } from '../queries/user';
+import { setMe } from '../store/slices/me';
 
 const Login = (props) => {
     const [values, setValues] = useState({
