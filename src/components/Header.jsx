@@ -15,9 +15,20 @@ const Header = (props) => {
   }
   return (
     <div className="header">
-      <div className="menu">
+      <div className="header__menu">
         <MenuIcon />
-        <img alt="EOP logo" src="eop_logo.png"/>
+        <img className="logo" alt="EOP logo" src="eop_logo.png"/>
+      </div>
+      <Search />
+      <div className="header__logUser">
+        {
+            props.me.token 
+            ? <Button onClick={logout}>Logout</Button>
+            : <Link to="/login">
+              <Button>Login</Button>
+            </Link>
+          }
+      </div>
         {/* <Link to="/about">
           <Button>About</Button>
         </Link>
@@ -36,19 +47,6 @@ const Header = (props) => {
         <Link to="/upload">
           <Button>Test Upload</Button>
         </Link> */}
-      </div>
-      <div className="searchFilters">
-        <Search />
-      </div>
-      <div className="logUser">
-        {
-            props.me.token 
-            ? <Button onClick={logout}>Logout</Button>
-            : <Link to="/login">
-              <Button>Login</Button>
-            </Link>
-          }
-      </div>
     </div>
   )
 };

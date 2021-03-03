@@ -1,0 +1,20 @@
+@import './themeColors.scss';
+
+.mainSearch {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    padding: 0;
+
+    input {
+        color: $primaryThemeColor;
+        font-size: 1rem;
+        background-color: black;
+        border-radius: 4px;
+        height: 1rem;
+        border: 1px solid $primaryThemeColor;
+        flex: 1;
+        margin: 0;
+        padding: 5px;
+    }
+}

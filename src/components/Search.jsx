@@ -1,18 +1,25 @@
+import React from 'react';
 import { connect } from 'react-redux';
-import { TextField } from '@material-ui/core'
+import SearchIcon from '@material-ui/icons/Search';
 
+import '../styles/Search.scss';
 import { updateFilter } from '../store/slices/filter'
 
 
 const Search = (props) => {
   return (
-      <TextField
+    <div className="mainSearch">
+      <input
+        className="filterInput"
+        placeholder="Search"
         variant="outlined"
         onChange={(e) => {
           props.updateFilter({ text: e.target.value })
         }}
         value={props.filters.text}
       />
+      <SearchIcon />
+    </div>
   );
 };
 
