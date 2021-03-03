@@ -9,9 +9,19 @@
         align-items: center;
         
         img {
-            height: 2rem;
+            height: 2.5rem;
             object-fit: contain;
-            margin-left: 1.5rem;
+            margin-left: 1rem;
         }
+    }
+
+    .searchFilters{
+        display: flex;
+        align-items: center;
+    }
+
+    .logUser{
+        display: flex;
+        align-items: center;
     }
 }
