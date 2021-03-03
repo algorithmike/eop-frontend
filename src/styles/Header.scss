@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+
+    .menu {
+        display: flex;
+        align-items: center;
+        
+        img {
+            height: 2rem;
+            object-fit: contain;
+            margin-left: 1.5rem;
+        }
+    }
+}

@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import { useQuery, gql } from '@apollo/client';
 
 const CONTENT = gql`
@@ -13,11 +14,11 @@ const CONTENT = gql`
   }
 `;
 
-const Results = () => {
+const Results = (props) => {
   const { loading, error, data } = useQuery(CONTENT);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error</p>;
 
   return (
     <div>
@@ -33,4 +34,11 @@ const Results = () => {
   );
 };
 
-export default Results;
+const mapStateToProps = (state) => ({
+  
+})
+const mapDispatchToProps = (dispatch) => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results); 

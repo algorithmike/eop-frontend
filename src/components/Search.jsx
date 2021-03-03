@@ -6,8 +6,6 @@ import { updateFilter } from '../store/slices/filter'
 
 const Search = (props) => {
   return (
-    <div>
-      <p>This is the Search page.</p>
       <TextField
         variant="outlined"
         onChange={(e) => {
@@ -15,7 +13,6 @@ const Search = (props) => {
         }}
         value={props.filters.text}
       />
-    </div>
   );
 };
 
