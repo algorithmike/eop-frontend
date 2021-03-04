@@ -24,7 +24,7 @@ const Search = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    filters: state.filters
+  filters: state.filters
 })
 const mapDispatchToProps = (dispatch) => ({
   updateFilter: (filter) => (dispatch(updateFilter(filter)))

@@ -4,24 +4,20 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 /          Types and interfaces for state management.           /
 / **************************************************************/
 export type Sort = 'ASC' | 'DESC';
+export type MediaType = 'IMAGES' | 'VIDEOS' | 'ALL';
 
 export interface FilterState {
     text?: string;
-    media_type?: 'IMAGES' | 'VIDEOS' | 'ALL';
-    event?: string;
     location?: {
-        longitude: number;
-        latitude: number;
-        sort: Sort;
+        country: string;
+        state: string;
+        city: string;
     };
-    record_date?: {
-        text: string;
-        sort: Sort;
+    epochTime?: {
+        beginning: string;
+        end: string;
     };
-    upload_date?: {
-        text: string;
-        sort: Sort;
-    };
+    mediaType?: MediaType; // TODO: Implement Filter by MediaType
 };
 
 /************************************************************** /
@@ -29,7 +25,7 @@ export interface FilterState {
 / **************************************************************/
 export const initialFilterState = {
     text: '',
-    media_type: 'ALL'
+    mediaType: 'ALL'
 } as FilterState;
 
 const filterSlice = createSlice({
