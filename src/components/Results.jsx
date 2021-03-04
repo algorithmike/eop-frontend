@@ -1,19 +1,6 @@
 import { connect } from 'react-redux';
 import { useQuery, gql } from '@apollo/client';
 
-// const CONTENT = gql`
-//   query {
-//     content {
-//       id
-//       title
-//       mediaType
-//       mediaUrl
-//       mediaPreviewUrl
-//       description
-//     }
-//   }
-// `;
-
 const CONTENT = gql`
   query  Content(
     $text: String,
@@ -22,6 +9,7 @@ const CONTENT = gql`
     $city: String,
     $beginning: String,
     $end: String,
+    $mediaType: String
   ) {
     content(
       filter: {
@@ -32,10 +20,11 @@ const CONTENT = gql`
         state: $state,
         city: $city
       },
-      epochTime:{
+      epochTime: {
         beginning: $beginning,
         end: $end
-      }
+      },
+      mediaType: $mediaType
     ){
       id
       title
@@ -54,11 +43,12 @@ const Results = ({
     city,
     state,
     beginning,
-    end
+    end,
+    mediaType
 }) => {
   const { loading, error, data } = useQuery(CONTENT, {
     variables: {
-      text, country, city, state, beginning, end 
+      text, country, city, state, beginning, end, mediaType
     }
   });
 
@@ -85,7 +75,8 @@ const mapStateToProps = (state) => ({
   city: state.filters?.location?.city,
   state: state.filters?.location?.state,
   beginning: state.filters?.epochTime?.beginning,
-  end: state.filters?.epochTime?.end
+  end: state.filters?.epochTime?.end,
+  mediaType: state.filters?.mediaType
 })
 
 export default connect(mapStateToProps)(Results); 

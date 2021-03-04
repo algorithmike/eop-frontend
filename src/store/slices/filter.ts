@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 /          Types and interfaces for state management.           /
 / **************************************************************/
 export type Sort = 'ASC' | 'DESC';
-export type MediaType = 'IMAGES' | 'VIDEOS' | 'ALL';
+export type MediaType = 'image' | 'video' | 'all';
 
 export interface FilterState {
     text?: string;
@@ -25,7 +25,7 @@ export interface FilterState {
 / **************************************************************/
 export const initialFilterState = {
     text: '',
-    mediaType: 'ALL'
+    mediaType: 'all'
 } as FilterState;
 
 const filterSlice = createSlice({
