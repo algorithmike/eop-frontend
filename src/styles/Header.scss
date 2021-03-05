@@ -22,12 +22,16 @@
         }
     }
 
-    .header__logUser{
+    .header__logUser {
         display: flex;
         align-items: center;
         Button {
             color: $primaryThemeColor;
             background-color: black;
+            
+        }
+        Button:hover {
+            color: $highlightColor;
         }
     }
 }

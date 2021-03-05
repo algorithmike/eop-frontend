@@ -1,0 +1,25 @@
+@import './themeColors.scss';
+
+.menuRow {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.65rem;
+    text-decoration: none;
+    color: black;
+}
+
+.menuRow__title {
+    flex: 1;
+    margin-left: 3rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.menuRow:hover {
+    background-color: $highlightColor;
+    cursor: pointer;
+}
+
+.menuRow:hover > .menuRow__title {
+    font-weight: bold;
+}
