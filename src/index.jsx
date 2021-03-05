@@ -2,9 +2,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/App';
 import instantiateStore from './store/store';
+import './styles/index.scss';
 
 const store = instantiateStore();
 const client = new ApolloClient({
@@ -20,7 +22,9 @@ const client = new ApolloClient({
 const JSX = (
   <ApolloProvider client={client}>
     <Provider store={store}>
+      <BrowserRouter>
         <App />
+      </BrowserRouter>
     </Provider>
   </ApolloProvider>
 );

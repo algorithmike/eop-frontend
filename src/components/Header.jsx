@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -29,24 +28,6 @@ const Header = (props) => {
             </Link>
           }
       </div>
-        {/* <Link to="/about">
-          <Button>About</Button>
-        </Link>
-        <Link to="/">
-          <Button>Home</Button>
-        </Link>
-        <Link to="/Help">
-          <Button>Home</Button>
-        </Link>
-        <Link to="/">
-          <Button>Test Results Page</Button>
-        </Link>
-        <Link to="/test">
-          <Button>Test 404 Page</Button>
-        </Link>
-        <Link to="/upload">
-          <Button>Test Upload</Button>
-        </Link> */}
     </div>
   )
 };

@@ -37,15 +37,8 @@ const CONTENT = gql`
   }
 `;
 
-const Results = ({
-    text,
-    country,
-    city,
-    state,
-    beginning,
-    end,
-    mediaType
-}) => {
+const Results = (props) => {
+  const {text, country, city, state, beginning, end, mediaType} = props
   const { loading, error, data } = useQuery(CONTENT, {
     variables: {
       text, country, city, state, beginning, end, mediaType
@@ -53,7 +46,10 @@ const Results = ({
   });
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
+  if (error) {
+    console.log(error)
+    return <p>Error</p>
+  };
 
   return (
     <div>
