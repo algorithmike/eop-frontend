@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { useQuery, gql } from '@apollo/client';
+
 import '../styles/Results.scss';
+import Result from './Result';
 
 const CONTENT = gql`
   query  Content(
@@ -51,15 +53,13 @@ const Results = (props) => {
     console.log(error)
     return <p>Error</p>
   };
-
+  
+  console.log(data);
   return (
     <div className="results">
       {data.content.map(({title, mediaPreviewUrl}, index) => {
         return (
-          <div key={index}>
-            <img src={mediaPreviewUrl} alt={title} style={{width: '15rem'}}/>
-            <h3>{title}</h3>
-          </div>
+          <Result index={index} title={title} mediaPreviewUrl={mediaPreviewUrl}/>
         )
       })}
     </div>

@@ -1,3 +1,9 @@
+@import './themeColors.scss';
+
 .results {
-    flex: 0.75;
+    background-color: #222;
+    color: $highlightColor;
+    flex: 0.8;
+    padding: 3rem 1.5rem;
+    padding-bottom: 0;
 }
