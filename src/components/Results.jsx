@@ -53,13 +53,12 @@ const Results = (props) => {
     console.log(error)
     return <p>Error</p>
   };
-  
-  console.log(data);
+
   return (
     <div className="results">
-      {data.content.map(({title, mediaPreviewUrl}, index) => {
+      {data.content.map((item, index) => {
         return (
-          <Result index={index} title={title} mediaPreviewUrl={mediaPreviewUrl}/>
+          <Result index={index} data={item}/>
         )
       })}
     </div>
