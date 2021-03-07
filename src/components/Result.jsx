@@ -1,13 +1,20 @@
 import '../styles/Result.scss';
 
-const Result = ({data, index}) => {
-    const {mediaPreviewUrl, title} = data;
-    console.log(data)
+const Result = ({data}) => {
+    const {mediaPreviewUrl, title, description, createdAt, event} = data;
+    const date = new Date(createdAt);
+    const dateString = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} at ${date.getHours()}hrs and ${date.getMinutes()}mins`
+
     
     return (
-        <div className="result" key={index}>
+        <div className="result" >
             <img src={mediaPreviewUrl} alt={title} />
-            <h3>{title}</h3>
+            <div className="result__text">
+                <h4>{title}</h4>
+                <p className="description">{description}</p>
+                <p className="eventTitle">@{event.title}</p>
+                <p className="dateString">{dateString}</p>
+            </div>
         </div>
     )
 }

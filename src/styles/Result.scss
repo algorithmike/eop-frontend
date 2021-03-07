@@ -1,5 +1,34 @@
 @import './themeColors.scss';
 
-.result > img {
-    width: '15rem';
+.result {
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+    border: 1px solid white;
+    padding: 0.25rem;
+    width: 15rem;
+    cursor: default;
+
+    img {
+        width: 100%;
+        height:10rem;
+        object-fit: cover;
+        cursor: pointer;
+    }
+}
+
+.result__text {
+    margin: 0.5rem;
+
+    h4 {
+        margin-bottom: 0.5rem;
+    }
+    .description {
+        color: white;
+    }
+    .eventTitle, .dateString {
+        font-size: small;
+        margin-top: 0.5rem;
+        text-align: right;
+        cursor: pointer;
+    }
 }

@@ -1,9 +1,11 @@
 @import './themeColors.scss';
 
 .results {
+    display: flex;
+    flex-wrap: wrap;
     background-color: #222;
     color: $highlightColor;
-    flex: 0.8;
-    padding: 3rem 1.5rem;
+    flex: 0.9;
+    padding: 2rem;
     padding-bottom: 0;
 }

@@ -36,6 +36,10 @@ const CONTENT = gql`
       mediaUrl
       mediaPreviewUrl
       description
+      createdAt
+      event {
+        title
+      }
     }
   }
 `;
@@ -58,7 +62,7 @@ const Results = (props) => {
     <div className="results">
       {data.content.map((item, index) => {
         return (
-          <Result index={index} data={item}/>
+          <Result key={index} data={item}/>
         )
       })}
     </div>
