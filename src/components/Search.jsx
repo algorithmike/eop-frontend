@@ -1,23 +1,28 @@
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import SearchIcon from '@material-ui/icons/Search';
 
 import '../styles/Search.scss';
-import { updateFilter } from '../store/slices/filter'
+import { updateFilter } from '../store/slices/filter';
 
 
 const Search = (props) => {
+  const [localFilterState, setLocalFilterState] = useState({
+    text: ''
+  });
+
   return (
     <div className="mainSearch">
       <input
+        value={localFilterState.text}
         className="filterInput"
         placeholder="Search"
         variant="outlined"
         onChange={(e) => {
-          props.updateFilter({ text: e.target.value })
+          setLocalFilterState({ text: e.target.value })
         }}
-        value={props.filters.text}
       />
-      <SearchIcon />
+      <SearchIcon onClick={() => {props.updateFilter(localFilterState)}}/>
     </div>
   );
 };
