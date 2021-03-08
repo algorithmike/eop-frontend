@@ -12,17 +12,20 @@ const Search = (props) => {
   });
 
   return (
-    <div className="mainSearch">
-      <input
-        value={localFilterState.text}
-        className="filterInput"
-        placeholder="Search"
-        variant="outlined"
-        onChange={(e) => {
-          setLocalFilterState({ text: e.target.value })
-        }}
-      />
-      <SearchIcon onClick={() => {props.updateFilter(localFilterState)}}/>
+    <div className="main">
+      <div className="main__search">
+        <input
+          value={localFilterState.text}
+          className="filterInput"
+          placeholder="Search"
+          variant="outlined"
+          onChange={(e) => {
+            setLocalFilterState({ text: e.target.value })
+          }}
+        />
+        <SearchIcon onClick={() => {props.updateFilter(localFilterState)}}/>
+      </div>
+      <div className="main__timeAndSpaceFilters">This is the next row!</div>
     </div>
   );
 };

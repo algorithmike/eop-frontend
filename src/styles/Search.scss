@@ -1,9 +1,13 @@
 @import './themeColors.scss';
 
-.mainSearch {
+.main {
+   width: 30%; 
+}
+
+.main__search {
     display: flex;
     align-items: center;
-    width: 30%;
+    width: 100%;
     padding: 0;
 
     input {
@@ -17,4 +21,9 @@
         margin: 0;
         padding: 5px;
     }
+}
+
+.main__timeAndSpaceFilters {
+    width: 100%;
+    border: 1pt solid green;
 }
