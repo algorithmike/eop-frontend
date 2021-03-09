@@ -1,5 +1,7 @@
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DayjsUtils from '@date-io/dayjs';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 import { BrowserRouter } from 'react-router-dom';
@@ -20,13 +22,15 @@ const client = new ApolloClient({
 
 
 const JSX = (
-  <ApolloProvider client={client}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </ApolloProvider>
+  <MuiPickersUtilsProvider utils={DayjsUtils}>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </ApolloProvider>
+  </MuiPickersUtilsProvider>
 );
 
 ReactDOM.render(JSX, document.getElementById('root'));
