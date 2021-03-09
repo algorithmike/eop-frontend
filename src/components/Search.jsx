@@ -25,7 +25,7 @@ const Search = (props) => {
         />
         <SearchIcon onClick={() => {props.updateFilter(localFilterState)}}/>
       </div>
-      <div className="main__timeAndSpaceFilters">This is the next row!</div>
+      <div className="main__timeFilters">This is the next row!</div>
     </div>
   );
 };

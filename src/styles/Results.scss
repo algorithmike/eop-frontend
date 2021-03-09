@@ -1,11 +1,18 @@
 @import './themeColors.scss';
 
 .results {
-    display: flex;
-    flex-wrap: wrap;
     background-color: #222;
-    color: $highlightColor;
     flex: 0.9;
-    padding: 2rem;
-    padding-bottom: 0;
+    padding: 1rem;
+    color: $primaryThemeColor;
+
+    h2 {
+        margin-bottom: 0.5rem;
+    }
+    .results__main {
+        padding-bottom: 0;
+        display: flex;
+        flex-wrap: wrap;
+        color: $highlightColor;
+    }
 }

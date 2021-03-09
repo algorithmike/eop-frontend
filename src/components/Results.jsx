@@ -3,6 +3,7 @@ import { useQuery, gql } from '@apollo/client';
 
 import '../styles/Results.scss';
 import Result from './Result';
+import { updateFilter } from '../store/slices/filter';
 
 const CONTENT = gql`
   query  Content(
@@ -45,10 +46,11 @@ const CONTENT = gql`
 `;
 
 const Results = (props) => {
-  const {text, country, city, state, beginning, end, mediaType} = props
+  //TODO: Update backend for pagination, then add ability here;
+  const {text, country, city, state, beginning, end, mediaType, take} = props
   const { loading, error, data } = useQuery(CONTENT, {
     variables: {
-      text, country, city, state, beginning, end, mediaType
+      text, country, city, state, beginning, end, mediaType, take
     }
   });
 
@@ -60,16 +62,20 @@ const Results = (props) => {
 
   return (
     <div className="results">
-      {data.content.map((item, index) => {
-        return (
-          <Result key={index} data={item}/>
-        )
-      })}
+      {(!text) && <h2>Latest Content</h2>}
+      <div className="results__main">
+        {data.content.map((item, index) => {
+          return (
+            <Result key={index} data={item}/>
+          )
+        })}
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
+  take: state.filters?.take,
   text: state.filters?.text,
   country: state.filters?.location?.country,
   city: state.filters?.location?.city,
@@ -79,4 +85,9 @@ const mapStateToProps = (state) => ({
   mediaType: state.filters?.mediaType
 })
 
-export default connect(mapStateToProps)(Results); 
+//TODO: Use updateFilter to update filter.take state.
+const mapDispatchToProps = (dispatch) => ({
+  updateFilter: (filter) => (dispatch(updateFilter(filter)))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results); 

@@ -3,10 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 /************************************************************** /
 /          Types and interfaces for state management.           /
 / **************************************************************/
-export type Sort = 'ASC' | 'DESC';
+export type Sort = 'asc' | 'desc';
 export type MediaType = 'image' | 'video' | 'all';
 
 export interface FilterState {
+    take?: number;
+    sort?: Sort;
     text?: string;
     location?: {
         country: string;
@@ -24,6 +26,8 @@ export interface FilterState {
 /                       Slice                                   /
 / **************************************************************/
 export const initialFilterState = {
+    take: 12,
+    sort: 'asc',
     text: '',
     mediaType: 'all'
 } as FilterState;
