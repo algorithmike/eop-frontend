@@ -29,7 +29,11 @@ export const initialFilterState = {
     take: 12,
     sort: 'asc',
     text: '',
-    mediaType: 'all'
+    mediaType: 'all',
+    epochDate: {
+        beginning: new Date(),
+        end: new Date()
+    }
 } as FilterState;
 
 const filterSlice = createSlice({
