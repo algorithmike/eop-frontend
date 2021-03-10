@@ -8,30 +8,37 @@ import { updateFilter } from '../store/slices/filter';
 
 
 const Search = (props) => {
+  const newDate = () => {
+    let retVal = new Date()
+    return retVal.getTime()
+  }
+  const initDate = (
+    new Date((new Date()).getFullYear(), 0, 1)
+  ).getTime()
+
   const [localFilterState, setLocalFilterState] = useState({
     text: ''
   });
-
-  const [fromDate, setFromDate] = useState(new Date());
-  const [toDate, setToDate] = useState(new Date());
+  const [fromDate, setFromDate] = useState(initDate);
+  const [toDate, setToDate] = useState(newDate());
   
   const handleFromDateChange = (date) => {
     if(!date){
-      setFromDate(new Date())
-      setToDate(new Date())
+      setFromDate(newDate())
+      setToDate(newDate())
     }
     else{
-      setFromDate(date.$d)
+      setFromDate(date.$d.getTime())
     }
   }
 
   const handleToDateChange = (date) => {
     if(!date){
-      setFromDate(new Date())
-      setToDate(new Date())
+      setFromDate(newDate())
+      setToDate(newDate())
     }
     else{
-      setToDate(date.$d)
+      setToDate(date.$d.getTime())
     }
   }
 
@@ -39,8 +46,8 @@ const Search = (props) => {
     props.updateFilter({
       ...localFilterState,
       epochTime: {
-        beginning: fromDate.getTime().toString(),
-        end: toDate.getTime().toString()
+        beginning: fromDate.toString(),
+        end: toDate.toString()
       }
     })
   }
@@ -58,6 +65,7 @@ const Search = (props) => {
           }}
         />
         <SearchIcon onClick={handleSearchOnClick}/>
+        <button onClick={() => console.log(newDate())}>Test</button>
       </div>
       <div className="main__timeFilters">
         <DatePicker

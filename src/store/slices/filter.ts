@@ -31,8 +31,8 @@ export const initialFilterState = {
     text: '',
     mediaType: 'all',
     epochDate: {
-        beginning: new Date(),
-        end: new Date()
+        beginning: (new Date()).getTime(),
+        end: (new Date()).getTime()
     }
 } as FilterState;
 

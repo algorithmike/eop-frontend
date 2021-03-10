@@ -40,6 +40,7 @@ const CONTENT = gql`
       createdAt
       event {
         title
+        city
       }
     }
   }
