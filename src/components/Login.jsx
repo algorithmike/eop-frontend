@@ -1,5 +1,5 @@
-import { useMutation, gql } from '@apollo/client';
-import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Box, Button, TextField, Container } from '@material-ui/core';
@@ -17,7 +17,7 @@ const Login = (props) => {
         errors: []
     })
 
-    const [login, {loading}] = useMutation(LOG_IN, {
+    const [login] = useMutation(LOG_IN, {
         update: (proxy, {data}) => {
             const { token, email, realname, description, profilePicUrl } = data.login
             localStorage.setItem('eop_auth', token)

@@ -65,7 +65,6 @@ const Search = (props) => {
           }}
         />
         <SearchIcon onClick={handleSearchOnClick}/>
-        <button onClick={() => console.log(newDate())}>Test</button>
       </div>
       <div className="main__timeFilters">
         <DatePicker
