@@ -11,11 +11,13 @@ const Result = ({data}) => {
             {/* Add Video conditional here */}
             {
                 (mediaType === 'video') &&
-                <ReactPlayer 
+                <ReactPlayer
                     width="15rem"
                     height="10rem"
                     url={mediaUrl}
-                    controls="true"
+                    controls={true}
+                    light={true}
+                    previewTabIndex={5}
                 />
             }
             {(mediaType === 'image') && <img className="content" src={mediaUrl} alt={title}/>}
