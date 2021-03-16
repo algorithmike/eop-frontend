@@ -8,7 +8,6 @@ const Result = ({data}) => {
 
     return (
         <div className="result" >
-            {/* Add Video conditional here */}
             {
                 (mediaType === 'video') &&
                 <ReactPlayer
@@ -16,7 +15,6 @@ const Result = ({data}) => {
                     height="10rem"
                     url={mediaUrl}
                     controls={true}
-                    light={true}
                     previewTabIndex={5}
                 />
             }
