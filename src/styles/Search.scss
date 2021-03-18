@@ -1,7 +1,7 @@
 @import './themeColors.scss';
 
 .main {
-   width: 30%; 
+   flex: 0.4;
 }
 
 .main__search {
@@ -26,12 +26,13 @@
 .main__timeFilters {
     padding: 0.5rem 0;
     width: 100%;
+    display: flex;
 
     .fromPicker {
-
+        flex: 0.5;
     }
 
     .toPicker {
-
+        flex: 0.5;
     }
 }

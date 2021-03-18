@@ -1,6 +1,3 @@
-import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-
 import '../styles/MenuColumn.scss';
 import MenuRow from './MenuRow';
 

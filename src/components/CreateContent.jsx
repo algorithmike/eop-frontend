@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { CREATE_CONTENT } from '../queries/content';
 
 const CreateContent = (props) => {
-  const [values, setValues] = useState({
+  const [values] = useState({
       title: 'Untitled',
       coordinates: '123, 456',
       description: 'Test Description',
@@ -29,7 +29,7 @@ const CreateContent = (props) => {
     const file = event.target.files && event.target.files[0];
     if(!file) return
   
-    const data = await createContent({
+    await createContent({
       variables: {
         file,
         ...values
