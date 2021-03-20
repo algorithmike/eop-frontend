@@ -42,12 +42,7 @@ test('dispatching updateFilter should update state for only text filter', () => 
 
 test('dispatching resetFilter should update state to match initialFilterState', () => {
     const updatedFilterText = 'Updated filter text.'
-    const updatedState = filtersReducer(undefined, updateFilter({ text: updatedFilterText }))
-
-    expect(updatedState).toEqual({
-        ...initialFilterState,
-        text: updatedFilterText
-    })
+    filtersReducer(undefined, updateFilter({ text: updatedFilterText }))
 
     const resetState = filtersReducer(undefined, resetFilter())
 
