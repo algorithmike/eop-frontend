@@ -52,6 +52,10 @@ const Search = (props) => {
     })
   }
 
+  const handleOnKeyDown = key => {
+    if(key === 'Enter'){handleSearchOnClick()}
+  }
+
   return (
     <div className="main">
       <div className="main__search">
@@ -63,6 +67,7 @@ const Search = (props) => {
           onChange={(e) => {
             setLocalFilterState({ text: e.target.value })
           }}
+          onKeyDown={(e) => handleOnKeyDown(e.key)}
         />
         <SearchIcon onClick={handleSearchOnClick}/>
       </div>
