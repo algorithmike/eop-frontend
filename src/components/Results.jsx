@@ -63,9 +63,11 @@ const Results = (props) => {
 
   return (
     <div className="results">
-      {(!text) && <h2>Latest Content</h2>}
+      {(!text && data.content.length  > 0) && <h2>Latest Content</h2>}
+      
       <div className="results__main">
-        {data.content.map((item, index) => {
+        {(data.content.length  < 1) ? <h2>No Results Found</h2> : 
+        data.content.map((item, index) => {
           return (
             <Result key={index} data={item}/>
           )
