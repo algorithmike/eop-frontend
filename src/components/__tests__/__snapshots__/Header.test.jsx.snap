@@ -103,7 +103,7 @@ exports[`should render header correctly 1`] = `
             readOnly={true}
             required={false}
             type="text"
-            value="March 23, 2021"
+            value="March 25, 2021"
           />
         </div>
         

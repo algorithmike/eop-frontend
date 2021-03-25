@@ -17,5 +17,6 @@ test('should render header correctly', () => {
         </MuiPickersUtilsProvider>
     );
     const tree = component.toJSON();
+    console.log(tree)
     expect(tree).toMatchSnapshot();
 })
