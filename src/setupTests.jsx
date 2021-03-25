@@ -3,3 +3,8 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+import Enzyme from 'enzyme';
+// TODO: Adapter is unofficial. Add official adapter if/when released by Airbnb.
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+
+Enzyme.configure({adapter: new Adapter()});
