@@ -18,5 +18,6 @@ test('should render header with logo', () => {
     );
 
     const eopLogo = screen.getByAltText(/eop logo/i);
+    console.log(eopLogo);
     expect(eopLogo).toBeInTheDocument;
 })
