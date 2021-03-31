@@ -55,10 +55,10 @@ const Results = (props) => {
     }
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <h2>Loading...</h2>;
   if (error) {
     console.log(error)
-    return <p>Error</p>
+    return <h2>Error</h2>
   };
 
   return (

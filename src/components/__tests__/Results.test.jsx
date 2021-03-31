@@ -29,6 +29,6 @@ test('should render "Loading..." message', () => {
         </ApolloProvider>
     );
 
-    const loadingMessage = screen.getByText('Loading...');
-    expect(loadingMessage).toBeInTheDocument();
+    const loadingMessage = screen.getByRole('heading', { level: 2 })
+    expect(loadingMessage.innerHTML).toMatch(/loading/i);
 })

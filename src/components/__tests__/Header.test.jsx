@@ -17,7 +17,6 @@ test('should render header with logo', () => {
         </MuiPickersUtilsProvider>
     );
 
-    const eopLogo = screen.getByAltText(/eop logo/i);
-    console.log(eopLogo);
+    const eopLogo = screen.getByRole('img', { name: 'EOP logo'} )
     expect(eopLogo).toBeInTheDocument;
 })
