@@ -1,0 +1,12 @@
+@import "./themeColors.scss";
+
+.pageNotFound {
+  margin: auto;
+  margin-top: 1rem;
+  color: $highlightColor;
+  font-size: 3rem;
+  text-align: center;
+  .icon {
+    font-size: 200% !important;
+  }
+}

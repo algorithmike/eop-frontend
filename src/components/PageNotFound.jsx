@@ -1,6 +1,13 @@
+import { Link } from "react-router-dom";
+import "../styles/PageNotFound.scss";
+import KeyboardReturnIcon from "@material-ui/icons/KeyboardReturn";
+
 const PageNotFound = () => (
-  <div>
-    <p>404 - This Page Wasn't Found</p>
+  <div className="pageNotFound">
+    <h1>Nothing To See Here</h1>
+    <Link to="/">
+      <KeyboardReturnIcon className="icon" />
+    </Link>
   </div>
 );
 
