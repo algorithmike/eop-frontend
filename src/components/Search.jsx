@@ -1,60 +1,57 @@
-import { useState } from 'react';
-import { connect } from 'react-redux';
-import SearchIcon from '@material-ui/icons/Search';
+import { useState } from "react";
+import { connect } from "react-redux";
+import SearchIcon from "@material-ui/icons/Search";
 import { DatePicker } from "@material-ui/pickers";
 
-import '../styles/Search.scss';
-import { updateFilter } from '../store/slices/filter';
-
+import "../styles/Search.scss";
+import { updateFilter } from "../store/slices/filter";
 
 const Search = (props) => {
   const newDate = () => {
-    let retVal = new Date()
-    return retVal.getTime()
-  }
-  const initDate = (
-    new Date((new Date()).getFullYear(), 0, 1)
-  ).getTime()
+    let retVal = new Date();
+    return retVal.getTime();
+  };
+  const initDate = new Date(new Date().getFullYear(), 0, 1).getTime();
 
   const [localFilterState, setLocalFilterState] = useState({
-    text: ''
+    text: "",
   });
   const [fromDate, setFromDate] = useState(initDate);
   const [toDate, setToDate] = useState(newDate());
-  
+
   const handleFromDateChange = (date) => {
-    if(!date){
-      setFromDate(newDate())
-      setToDate(newDate())
+    if (!date) {
+      setFromDate(newDate());
+      setToDate(newDate());
+    } else {
+      setFromDate(date.$d.getTime());
     }
-    else{
-      setFromDate(date.$d.getTime())
-    }
-  }
+  };
 
   const handleToDateChange = (date) => {
-    if(!date){
-      setFromDate(newDate())
-      setToDate(newDate())
+    if (!date) {
+      setFromDate(newDate());
+      setToDate(newDate());
+    } else {
+      setToDate(date.$d.getTime());
     }
-    else{
-      setToDate(date.$d.getTime())
-    }
-  }
+  };
 
   const handleSearchOnClick = () => {
     props.updateFilter({
       ...localFilterState,
       epochTime: {
         beginning: fromDate.toString(),
-        end: toDate.toString()
-      }
-    })
-  }
+        end: toDate.toString(),
+      },
+    });
+  };
 
-  const handleOnKeyDown = key => {
-    if(key === 'Enter'){handleSearchOnClick()}
-  }
+  const handleOnKeyDown = (key) => {
+    if (key === "Enter") {
+      handleSearchOnClick();
+    }
+  };
 
   return (
     <div className="main">
@@ -65,11 +62,11 @@ const Search = (props) => {
           placeholder="Search"
           variant="outlined"
           onChange={(e) => {
-            setLocalFilterState({ text: e.target.value })
+            setLocalFilterState({ text: e.target.value });
           }}
           onKeyDown={(e) => handleOnKeyDown(e.key)}
         />
-        <SearchIcon onClick={handleSearchOnClick}/>
+        <SearchIcon onClick={handleSearchOnClick} />
       </div>
       <div className="main__timeFilters">
         <DatePicker
@@ -82,7 +79,7 @@ const Search = (props) => {
           clearable
           disableFuture
           value={fromDate}
-          onChange={date => handleFromDateChange(date)}
+          onChange={(date) => handleFromDateChange(date)}
         />
         <DatePicker
           className="toPicker"
@@ -102,10 +99,10 @@ const Search = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  filters: state.filters
-})
+  filters: state.filters,
+});
 const mapDispatchToProps = (dispatch) => ({
-  updateFilter: (filter) => (dispatch(updateFilter(filter)))
-})
+  updateFilter: (filter) => dispatch(updateFilter(filter)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search); 
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
