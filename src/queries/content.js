@@ -1,4 +1,5 @@
-import { gql } from '@apollo/client';
+// TODO: Use this when implementing CreateContent.jsx.
+import { gql } from "@apollo/client";
 
 export const CREATE_CONTENT = gql`
   mutation createContent(
@@ -9,27 +10,27 @@ export const CREATE_CONTENT = gql`
     $postedFromEop: Boolean
     $customDate: Float
     $eventId: String
-    ){
-    createContent( 
+  ) {
+    createContent(
       data: {
-        file: $file,
-        title: $title,
-        coordinates: $coordinates,
-        description: $description,
-        postedFromEop: $postedFromEop,
-        customDate: $customDate,
+        file: $file
+        title: $title
+        coordinates: $coordinates
+        description: $description
+        postedFromEop: $postedFromEop
+        customDate: $customDate
         eventId: $eventId
       }
-    ){
-      mediaType,
-      title,
-      createdAt,
-      updatedAt,
-      postedFromEop,
-      mediaUrl,
-      mediaPreviewUrl,
-      description,
+    ) {
+      mediaType
+      title
+      createdAt
+      updatedAt
+      postedFromEop
+      mediaUrl
+      mediaPreviewUrl
+      description
       customDate
     }
   }
-`
+`;

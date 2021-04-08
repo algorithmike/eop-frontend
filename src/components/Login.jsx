@@ -1,4 +1,4 @@
-// TODO: Implement this page.
+// TODO: Implement page when adding author features to web component.
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { connect } from "react-redux";
