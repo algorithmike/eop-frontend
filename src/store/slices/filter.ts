@@ -1,50 +1,50 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 /************************************************************** /
 /          Types and interfaces for state management.           /
 / **************************************************************/
-export type Sort = 'asc' | 'desc';
-export type MediaType = 'image' | 'video' | 'all';
+export type Sort = "asc" | "desc";
+export type MediaType = "image" | "video" | "all";
 
 export interface FilterState {
-    take?: number;
-    sort?: Sort;
-    text?: string;
-    location?: {
-        country: string;
-        state: string;
-        city: string;
-    };
-    epochTime?: {
-        beginning: string;
-        end: string;
-    };
-    mediaType?: MediaType; // TODO: Implement Filter by MediaType
-};
+  take?: number;
+  sort?: Sort;
+  text?: string;
+  location?: {
+    country: string;
+    state: string;
+    city: string;
+  };
+  epochTime?: {
+    beginning: string;
+    end: string;
+  };
+  mediaType?: MediaType;
+}
 
 /************************************************************** /
 /                       Slice                                   /
 / **************************************************************/
 export const initialFilterState = {
-    take: 12,
-    sort: 'asc',
-    text: '',
-    mediaType: 'all',
-    epochDate: {
-        beginning: (new Date()).getTime(),
-        end: (new Date()).getTime()
-    }
+  take: 12,
+  sort: "asc",
+  text: "",
+  mediaType: "all",
+  epochDate: {
+    beginning: new Date().getTime(),
+    end: new Date().getTime(),
+  },
 } as FilterState;
 
 const filterSlice = createSlice({
-    name: 'filters',
-    initialState: initialFilterState,
-    reducers: {
-        updateFilter: (state, action: PayloadAction<FilterState>) => {
-            return ({ ...state, ...action.payload })
-        },
-        resetFilter: () => initialFilterState
-    }
+  name: "filters",
+  initialState: initialFilterState,
+  reducers: {
+    updateFilter: (state, action: PayloadAction<FilterState>) => {
+      return { ...state, ...action.payload };
+    },
+    resetFilter: () => initialFilterState,
+  },
 });
 
 export default filterSlice.reducer;
