@@ -1,0 +1,14 @@
+@import "./themeColors.scss";
+
+.about {
+  flex: 0.9;
+  width: 90vw;
+  margin: 1rem;
+  max-width: 1170px;
+  color: $primaryThemeColor;
+}
+
+.about-text {
+  color: white;
+  line-height: 2;
+}
