@@ -1,17 +1,18 @@
-@import './themeColors.scss';
+@import "./themeColors.scss";
 
 .results {
-    flex: 0.9;
-    padding: 1rem;
-    color: $primaryThemeColor;
+  // flex: 0.9; Use 0.9 if we use a menu column.
+  flex: 1;
+  padding: 1rem;
+  color: $primaryThemeColor;
 
-    h2 {
-        margin-bottom: 0.5rem;
-    }
-    .results__main {
-        padding-bottom: 0;
-        display: flex;
-        flex-wrap: wrap;
-        color: $highlightColor;
-    }
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+  .results__main {
+    padding-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    color: $highlightColor;
+  }
 }
